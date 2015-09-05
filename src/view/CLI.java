@@ -23,7 +23,7 @@ public class CLI {
     public void start()
     {
  
-    new Runnable() {
+    new Thread( new Runnable() {
 		
 		@Override
 		public void run() {
@@ -32,9 +32,7 @@ public class CLI {
 			    Command command = null;
 			 while(buffer!="exit")
 			    {
-			    
 						buffer = in.readLine();
-					
 			    	command = commandMap.get(buffer);
 			    	if (command!=null)
 			    		command.doCommand();
@@ -47,7 +45,7 @@ public class CLI {
 			    	
 			    }
 		
-	}.run();
+	}).start();
    
     } 
     
