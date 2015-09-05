@@ -1,0 +1,12 @@
+dfdfdf
+generate 3d maze amit 7 7 7
+fffddd
+test
+dir c:\
+dir 
+generate 3d maze moshe 7 7 7
+test sd
+display amit
+exit
+exit
+exit

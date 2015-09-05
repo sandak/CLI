@@ -28,17 +28,21 @@ public class CLI {
 		@Override
 		public void run() {
 				try {
-			   String buffer=null;
+			   String buffer=in.readLine();
 			    Command command = null;
-			 while(buffer!="exit")
+			 while(!buffer.equals("exit"))
 			    {
-						buffer = in.readLine();
-			    	command = commandMap.get(buffer);
+						
+			    	command = commandMap.get(buffer.split(" ")[0]);
 			    	if (command!=null)
-			    		command.doCommand();
+			    		if (buffer.split(" ").length>1)
+			    			command.doCommand(buffer.substring(buffer.indexOf(' ')+1));
+			    		else out.println("missing parameters!");
 			    	else
 			    		out.println(buffer + " is not reconized command!");
+			    	buffer = in.readLine();
 			    	}
+			 out.flush();
 				}catch (IOException e) {
 						e.printStackTrace();
 					}
